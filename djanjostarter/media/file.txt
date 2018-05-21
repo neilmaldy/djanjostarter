@@ -1,1 +1,1 @@
-b'TEST'
+B'TEST TEXT'B'TEST'

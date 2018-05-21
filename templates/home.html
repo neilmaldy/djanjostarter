@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<div class="jumbotron">
+  <h1 class="display-4">ARS Scrub</h1>
+  <p class="lead">Analyze ARS reports from Active IQ</p>
+  <p class="lead">
+    <a class="btn btn-primary btn-lg" href="{% url 'report_list' %}" role="button">View All Reports</a>
+  </p>
+</div>
+{% endblock %}

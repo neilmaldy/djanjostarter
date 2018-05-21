@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="article-entry">
+  <h2>{{ object.name }}</h2>
+    <p>by {{ object.author }} | {{ object.date }}</p>
+    <p>{{ object.risks_to_highlight }}</p>
+    {% if object.output_file %}
+    <p><a href="{{ object.output_file.url }}">Download Last Report</a></p>
+    {% endif %}
+  </div>
+
+  <p><a href="{% url 'report_edit' object.pk %}">Edit</a> | <a href="{% url 'report_delete' object.pk %}">Delete</a></p>
+  <p>Back to <a href="{% url 'report_list' %}">Report List</a>.</p>
+{% endblock content %}

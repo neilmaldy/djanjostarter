@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}Reports{% endblock %}
+
+{% block content %}
+  {% for report in object_list %}
+    <div class="card">
+      <div class="card-header">
+        <span class="font-weight-bold">{{ report.title }}</span> &middot;
+        <span class="text-muted">{{ report.name }}, first created: {{ report.date }}</span>
+      </div>
+      <div class="card-body">
+      {% if report.output_file %}
+        <p><a href="{{ report.output_file.url }}">Download Last Report</a></p>
+      {% endif %}
+      <p>{{ report.body }}</p>
+        <a href="{% url 'report_edit' report.pk %}">Edit</a> |
+        <a href="{% url 'report_delete' report.pk %}">Delete</a>
+      </div>
+      <div class="card-footer">
+      </div>
+    </div>
+    <br />
+  {% endfor %}
+{% endblock content %}

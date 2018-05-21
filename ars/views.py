@@ -66,10 +66,10 @@ class ReportUpdateView(LoginRequiredMixin, UpdateView):
     login_url = 'login'
 
     def form_valid(self, form):
-        self.request.FILES['input_files'].open('r')
-        with open(os.path.join(settings.MEDIA_ROOT, 'file.txt'), 'w') as f:
-            f.write(str(self.request.FILES['input_files'].read().upper()))
-        form.instance.output_file.save('file.txt', File(open(os.path.join(settings.MEDIA_ROOT, 'file.txt'))))
+        if 'input_files' in form.cleaned_data and form.cleaned_data['input_files']:
+            output_file_path = os.path.join(settings.MEDIA_ROOT, 'file.txt')
+            handle_zip_file(output_file_path, form.cleaned_data)
+            form.instance.output_file.save('file.txt', File(open(output_file_path)))
         return super().form_valid(form)
 
 

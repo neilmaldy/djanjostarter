@@ -7,11 +7,13 @@
     <div class="card">
       <div class="card-header">
         <span class="font-weight-bold">{{ report.title }}</span> &middot;
-        <span class="text-muted">{{ report.name }}, first created: {{ report.date }}</span>
+        <span class="text-muted">{{ report.name }}, last changed: {{ report.date }}</span>
       </div>
       <div class="card-body">
       {% if report.output_file %}
         <p><a href="{{ report.output_file.url }}">Download Last Report</a></p>
+      {% else %}
+        <p>No report available</p>
       {% endif %}
       <p>{{ report.body }}</p>
         <a href="{% url 'report_edit' report.pk %}">Edit</a> |

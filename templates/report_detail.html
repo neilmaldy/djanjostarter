@@ -3,10 +3,11 @@
 {% block content %}
 <div class="article-entry">
   <h2>{{ object.name }}</h2>
-    <p>by {{ object.author }} | {{ object.date }}</p>
-    <p>{{ object.risks_to_highlight }}</p>
+    <p>by {{ object.author }}, last changed:  {{ object.date }}</p>
     {% if object.output_file %}
     <p><a href="{{ object.output_file.url }}">Download Last Report</a></p>
+    {% else %}
+    <p>No report available</p>
     {% endif %}
   </div>
 

@@ -1,0 +1,25 @@
+{% extends 'baseasupcheck.html' %}
+
+{% load staticfiles %}
+
+{% block body_block %}
+        <h1>AutoSupport Check</h1>
+        <p>Reports will be scheduled as a batch job and mailed to username provided
+		<p>* indicates a required field
+		<p>Contact Neil Maldonado with questions
+		
+
+        <form id="category_form" method="post" action="/reports/asupcheck/">
+
+            {% csrf_token %}
+            {% for hidden in form.hidden_fields %}
+                {{ hidden }}
+            {% endfor %}
+			<fieldset>
+			{{ form}}
+            <p>Helpful notes:<p><textarea readyonly id="id_helpful_info" rows="10" cols="60">Choose a check for more information...</textarea>
+            <p><a href="/static/ac-atto-fw.py" id="id_link_to_script" target="_blank">View source</a>
+			</fieldset>
+            <input type="submit" name="submit" value="Request" />
+        </form>
+{% endblock %}

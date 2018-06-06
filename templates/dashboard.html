@@ -1,0 +1,21 @@
+{% extends 'baseasupcheck.html' %}
+
+{% load staticfiles %}
+
+{% block body_block %}
+        <h1>History of Report Requests</h1>
+            <table border="1">
+                <tr>
+                    <td><b> -- Customer Name -- </b></td>
+                    <td><b> -- Support Account Manager (and date) -- </b></td>
+                    <td><b> -- NetApp Userid -- </b></td>
+                </tr>
+                {% for category in categories|slice:":20" %}
+                <tr>
+                    <td>{{ category.name }}</td>
+                    <td>{{ category.email }}</td>
+                    <td>{{ category.check }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+{% endblock %}
